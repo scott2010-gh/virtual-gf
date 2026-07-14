@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;    
+    background: #B9C0DA;
+}
+
+.title{
+    font-family:'Nanum Pen Script',cursive;
+}
+
+.box1{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width:800px;
+    height:430px;
+    background-color: #998DA0;
+    border-radius: 8px;
+}
+
+.btn{
+    background-color: #C4E7D4;
+    border-radius:8px;
+    padding:12px 24px;
+    color:#63585E;
+    cursor:pointer;
+    border:none;
+    transition:transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow:5px 5px 8px rgb(0,0,0,0.3);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:8px 8px 8px rgb(0,0,0,0.6);
+}
+
+.btn:focus{
+    transform:translateY(-5px);
+    box-shadow:8px 8px 8px rgb(0,0,0,0.6);
+}
+
+.inp{
+    background-color:rgb(255, 255, 255);
+    color:black;
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    cursor:text;
+    box-shadow:5px 5px 8px rgb(0,0,0,0.3);
+    transition:transform 0.5s ease, box-shadow 0.5s ease;
+}
+.inp:focus{
+    transform:translateY(-10px);
+    box-shadow:10px 10px 8px rgb(0,0,0,0.6);
+}
+
+.link{
+    text-shadow:3px 3px 2px rgb(0,0,0,0.3);
+    transition:text-shadow 0.5s ease;
+}
+
+.link:hover{
+    text-shadow:6px 6px 2px rgb(0,0,0,0.6);
+}

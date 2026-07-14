@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>로그인</title>
+        <link rel="stylesheet" href="{{url_for('static',path='/ls.css')}}">
+    </head>
+    <body>
+        <div class="box1">
+            <h1 style="color:#63585E;">로그인</h1>
+            <br>
+            <form method="post" action="/login_try" style="display:flex; flex-direction:column; gap:2px; align-items:center;">
+                <input name="uname" class="inp" placeholder="사용자 이름">
+                <br>
+                <input name="pwd" class="inp" type="password" placeholder="비밀번호">
+                {%if err!=None%}
+                    <p style="color:red;">{{err}}</p>
+                {%endif%}
+                <button class="btn" type="submit">로그인</button>
+            </form>
+            <br>
+            <a href="/signup" class="link" style="text-decoration:none; color:rgb(123, 255, 202)">계정 없음?</a>
+        </div>
+
+    </body>
+</html>

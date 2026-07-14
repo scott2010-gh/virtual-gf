@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>가상여친2.0-public beta</title>
+        <link rel="stylesheet" href="{{url_for('static',path='style.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body style="background-color:blanchedalmond; font-weight:bold;display: flex;flex-direction: column;justify-content: center;min-height: 100vh;" id="doc">
+        <div style="display:flex;flex-direction:row;align-items:flex-start;justify-content: center;gap:20px">
+            <div style="border: 2px solid #333;box-shadow:5px 5px 8px rgba(0,0,0,0.3); background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0;height: 630px;">
+                <h1 style="text-align:center">가상여친2.0-public beta</h1>
+                <hr>
+                <h3 style="color:rgb(255, 186, 83); text-align:center">{채팅 내역}</h3>
+                <div class="inbox_chat">
+                    <div id="chat" style="white-space:pre-wrap;"></div>
+                </div>
+                <div class="conversation-compose" >
+                    <div>
+                        <input class="input-msg" name="input-msg" type="text" id="inp" placeholder="아무 말이나 지껄여보쇼" onkeydown="if(event.key=='Enter')send()">
+                        <button class="send" onclick="send()">
+                            <div class="circle">
+                            <i class="fas fa-paper-plane"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px;">
+                <div class="menu_box">
+                    {%if uname!=None%}
+                        <p style="margin:0; transform:translateY(-5px); color:rgb(0, 192, 29)">USER : {{uname}}</p>
+                    {%else%}
+                        <p style="color:red; transform:translateY(-5px); margin:0;">쿠키 오류</p>
+                    {%endif%}
+                    <button class="btn" onclick="backup()">대화 백업</button>
+                    <button class="btn" onclick="load_f()">대화 불러오기</button>
+                    <input style="display:none;" id="ld" type="file" onchange="load(event)">
+                    <button class="btn" onclick="logout()">로그아웃</button>
+                    <button class="btn">수상한 버튼</button>
+                </div>
+                <div class="menu_box" style="align-items:flex-start;text-align:left;">
+                    <h3 style="font-weight:bold;margin:0;text-align:center;width: 100%;">{ 명령어들 }</h3>
+                    <p style="margin:0;font-weight:bold;">/clear</p>
+                    <p style="margin:0;font-weight:lighter">대화창 초기화</p>
+                    <p style="margin:0;font-weight:bold;">/reset_conv</p>
+                    <p style="margin:0;font-weight:lighter">llm기억 초기화</p>
+                    <p style="margin:0;font-weight:bold;">/test</p>
+                    <p style="margin:0;font-weight:lighter">그냥 테스트</p>
+                </div>
+                <select class="dd" onchange="change_model(this.value)">
+                    <option value="1" selected>groq - gpt_oss 기반</option>
+                    <!--<option value="2">준비중</option>
+                    <option value="3">준비중</option>-->
+                </select>
+            </div>
+        </div>
+        <script>
+            const ws=new WebSocket("ws://localhost:8000/ws");
+            const i = document.getElementById('inp');
+            const prt = document.getElementById('chat');
+            const m = document.querySelector('.inbox_chat');
+            
+
+            ws.onmessage = function(event){
+                const dt = JSON.parse(event.data)
+
+                if (dt.msg=="clear-chat"){
+                    prt.innerHTML="";
+                    m.scrollTop=m.scrollHeight;
+                }
+                else{
+                    prt.innerHTML+=`<hr><div style="color:lightcoral">아랴 : ${dt.msg}</div>`;
+                    m.scrollTop=m.scrollHeight;
+                }
+                if (dt.uname !== undefined){
+                    const usdata = [dt.uname,[dt.pwd,dt.mem,dt.backup]];
+                    const cookieValue = encodeURIComponent(JSON.stringify(usdata));
+                    document.cookie = "user_data=" + cookieValue + "; path=/";
+                }
+
+
+            };
+            
+            function change_model(v){
+                ws.send(JSON.stringify({"type":"modelcg","model":v}))
+            }
+            function send(){
+                const t = i.value;
+                prt.innerHTML+=`<hr>나 : ${t}`;
+                m.scrollTop=m.scrollHeight;
+                ws.send(t);
+                i.value="";
+            }
+
+            function backup(){
+                const dat = prt.innerHTML;
+                const dat_blob = new Blob([dat],{'type':'text/plain;charset=utf-8;'});
+
+                const url = window.URL.createObjectURL(dat_blob);
+                const a = document.createElement('a');
+                a.href=url;
+                a.download="backup.txt"
+                document.body.appendChild(a);
+                a.click();
+            }
+
+            function load_f(){
+                document.getElementById('ld').click();
+            }
+            
+            function load(event){
+                const file = event.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(e){
+                    const f = e.target.result;
+
+                    if (f.trim()){
+                        prt.innerHTML=f;
+                        m.scrollTop=m.scrollHeight;
+                        
+                    }
+                }
+                reader.readAsText(file,"UTF-8");
+                event.target.value="";
+            }
+
+            function logout(){
+                window.location.replace("/logout");
+            }
+        </script>
+    </body>
+</html>

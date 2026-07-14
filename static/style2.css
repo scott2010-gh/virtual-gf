@@ -1,0 +1,264 @@
+body {
+  font-family: sans-serif !important;
+}
+.bg-funky {
+  background: #FF1744;
+} 
+
+.heading {
+  color: #fff;
+  margin: 30px;
+  font-weight: 600;
+}
+
+img {max-width: 100%;}
+    .inbox_msg {
+      border: 1px solid #c4c4c4;
+      clear: both;
+      overflow: hidden;
+    }
+    .top_spac{ margin: 20px 0 0;}
+
+
+    .recent_heading {float: left; width:40%;}
+
+    .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+
+    .recent_heading h4 {
+      color: #05728f;
+      font-size: 21px;
+      margin: auto;
+    }
+
+    .chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+    .chat_ib h5 span{ font-size:13px; float:right;}
+    .chat_ib p{ font-size:14px; color:#989898; margin:auto}
+    .chat_img {
+      float: left;
+      width: 11%;
+    }
+    .chat_ib {
+      float: left;
+      padding: 0 0 0 15px;
+      width: 88%;
+    }
+
+    .chat_people{ overflow:hidden; clear:both;}
+    .chat_list {
+      border-bottom: 1px solid #c4c4c4;
+      margin: 0;
+      padding: 18px 16px 10px;
+    }
+    .inbox_chat { 
+      height: 400px;
+      overflow-y: scroll; 
+      transform:translateY(10px)
+    }
+
+    .active_chat{ background:#ebebeb;}
+
+    .incoming_msg_img {
+      display: inline-block;
+      width: 6%;
+    }
+    .received_msg {
+      display: inline-block;
+      padding: 0 0 0 10px;
+      vertical-align: top;
+      width: 92%;
+     }
+     .received_withd_msg p {
+      background: #e4e8fb none repeat scroll 0 0;
+      border-radius: 3px;
+      color: #646464;
+      font-size: 14px;
+      margin: 0;
+      padding: 5px 10px 5px 12px;
+      width: 100%;
+    }
+    .time_date {
+      color: #747474;
+      display: block;
+      font-size: 10px;
+      margin: 3px 0 0;
+    }
+    .received_withd_msg { width: 70%;}
+    .mesgs {
+      float: left;
+      padding: 40px;
+    }
+
+     .sent_msg p {
+      background: #3F51B5 none repeat scroll 0 0;
+      border-radius: 3px;
+      font-size: 14px;
+      margin: 0; color:#fff;
+      padding: 5px 10px 5px 12px;
+      width:100%;
+    }
+    .outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+    .sent_msg {
+      float: right;
+      width: 70%;
+      text-align: right;
+    }
+    .input_msg_write input {
+      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+      border: medium none;
+      color: #4c4c4c;
+      font-size: 15px;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+    .msg_send_btn {
+      background: #05728f none repeat scroll 0 0;
+      border: medium none;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      font-size: 17px;
+      height: 33px;
+      position: absolute;
+      right: 0;
+      top: 11px;
+      width: 33px;
+    }
+    .messaging { background: #fff;}
+    .msg_history {
+      max-height: 516px;
+      overflow-y: auto;
+    }
+
+.credit {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.credit a {
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 2px;
+  border-bottom: dotted 1px;
+}
+
+.conversation-compose {
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top:15px;
+  transform:translateY(-15px);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  border:2px solid #464646;
+  border-radius:10px; 
+  width:490px;
+  height:60px;
+}
+
+/* 입력창 내부 요소들의 공통 배경 및 높이 지정 */
+.conversation-compose div,
+.conversation-compose input {
+  background: #fff;
+  height: 100%;
+}
+
+/* 2. 왼쪽에 들어가는 이모지 버튼 박스 */
+.conversation-compose .emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 5px 0 0 5px;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  width: 48px;
+}
+
+/* 3. 텍스트를 입력하는 실제 input 창 */
+.conversation-compose .input-msg {
+  border: 0;
+  flex: 1 1 auto;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  min-width: 400px;
+  padding: 0 15px;
+  margin-top:10px;
+  background-color:lemonchiffon;
+  border-radius: 10px;
+}
+
+/* 4. 오른쪽에 들어가는 카메라/사진 아이콘 박스 */
+.conversation-compose .photo {
+  flex: 0 0 auto;
+  border-radius: 0 0 5px 0;
+  text-align: center;
+  position: relative;
+  width: 48px;
+}
+
+/* 사진 박스 오른쪽에 살짝 말풍선 꼬리처럼 생기게 하는 효과 */
+.conversation-compose .photo:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  top: 0;
+  right: -10px;
+}
+
+/* 사진 박스 내부 아이콘 정렬 */
+.conversation-compose .photo i {
+  display: block;
+  color: #7d8488;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
+/* 5. 비행기 모양의 [전송] 버튼 전체 기본 설정 */
+.conversation-compose .send {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 0;
+  position: relative;
+  outline: none;
+}
+
+/* 6. 전송 버튼 내부의 초록색 동그라미 스타일 */
+.conversation-compose .send .circle {
+  background: #008a7c;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform:translateY(5px)
+}
+
+/* 전송 버튼 아이콘 세부 위치 보정 */
+.conversation-compose .send .circle i {
+  font-size: 24px;
+  margin-right: 3px;
+}
+
+/*::-webkit-scrollbar{
+  display:none;
+}*/

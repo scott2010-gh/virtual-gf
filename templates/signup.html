@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+        <link rel="stylesheet" href="{{url_for('static',path='/ls.css')}}">
+    </head>
+    <body>
+        <div class="box1">
+            <h1 style="color:#63585E;">회원가입</h1>
+            <br>
+            <form method="post" action="/add_db" style="display:flex; flex-direction:column; align-items:center;">
+                <input name="uname" class="inp" placeholder="사용자 이름">
+                <br>
+                <input name="pwd" class="inp" type="password" placeholder="비밀번호">
+                {%if err!=None%}
+                    <p style="color:red;">{{err}}</p>
+                {%endif%}
+                <button class="btn" type="submit">가입하기</button>
+            </form>
+            <br>
+            <a href="/login" class="link" style="text-decoration:none; color:rgb(123, 255, 202)">이미 계정 있냐?</a>
+        </div>
+    </body>
+</html>

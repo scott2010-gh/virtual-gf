@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>로그아웃</title>
+        <link rel="stylesheet" href="{{url_for('static',path='ls.css')}}">
+    </head>
+    <body>
+        <div style="display:flex;flex-direction: column;gap:0px">
+            <h1 style="margin:0;">로그아웃됨</h1>
+            <h4>로그아웃이 완료되었습니다.</h4>
+            <p>사용자 계정 정보 및 실시간 대화 내역이 담겨 구워진 쿠키가 제거되었습니다🍪</p>
+            <button class="btn" onclick="gologin()">로그인하러 이동하기</button>
+        </div>
+        <script>
+            function gologin(){
+                window.location.replace("/login");
+            }
+        </script>
+    </body>
+</html>

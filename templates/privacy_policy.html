@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>개인정보 처리방침</title>
+        <link rel="stylesheet" href="{{url_for('static',path='/style2.css')}}">
+    </head>
+    <body>
+        <h1 style="text-align:center">개인정보 처리방침</h1>
+        <h3 style="text-align:center">Privacy Policy</h3>
+        <hr>
+        <div style="overflow-y:scroll; max-height:200px; max-width:700px; white-space: pre-wrap; margin:0px auto; text-align:left">{{privacy_policy}}</div>
+        <br>
+        <label style="display:flex;justify-content: center; gap:5px;">
+            <input id="ok" type="checkbox" name="ok">
+            <span>개인정보 수집 및 이용 동의 (필수)</span>
+            <br>
+        </label>
+        <br>
+        <label style="display:flex; justify-content: center;">
+            <button type="submit" onclick="sub()">서비스로 이동</button>
+        </label>
+        <label style="display:flex; justify-content: center;">
+            <p id="retry" style="color:red"></p>
+        </label>
+        <script>
+            const isok = document.getElementById('ok')
+            const r = document.getElementById('retry')
+            
+            function sub(){
+                if (isok.checked){
+                    window.location.replace("/ck")
+                }
+                else{
+                    r.innerText="개인정보 처리방침에 동의하여 계속 진행하세요"
+                }
+            }
+        </script>
+    </body>
+</html>
