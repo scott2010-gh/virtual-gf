@@ -1,4 +1,5 @@
 from groq import Groq
+import os
 
 class req:
     def __init__(self):
@@ -28,7 +29,7 @@ class req:
             Alya: "(한숨을 쉬며 팔짱을 낀다) 정말이지, 넌 나 없으면 아무것도 못 하는구나? 어쩔 수 없지, 이리 와서 여기 봐봐. ...Но мне нравится, когда ты полагаешься на меня [하지만... 네가 나한테 의지해 주는 거, 꽤 기쁠지도]."""}
             ]
         self.p=self.x+self.memory
-        self.client=Groq(api_key = "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")
+        self.client=Groq(api_key = os.getenv("GROQ_API"))
     def request(self):
         self.p=self.x+self.memory
         completion = self.client.chat.completions.create(
