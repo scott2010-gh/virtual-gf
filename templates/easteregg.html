@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>이스터에그</title>
+        <link rel="stylesheet" href="{{url_for('static',path='ee.css')}}">
+    </head>
+    <body>
+        <h1 class="text1">미쿠다욧</h1>
+        <br><br>
+            <div class="box">
+                {%for j in color%}
+                    <div class="circle" style="--r: {{j.r}}; --b: {{j.b}}; --g: {{j.g}}; --x: {{loop.index0}};"></div>
+                {%endfor%}
+            </div>
+            <img class='miku' src="{{url_for('static',path='img.png')}}">
+            <br>
+    </body>
+</html>

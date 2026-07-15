@@ -37,7 +37,7 @@
                     <button class="btn" onclick="load_f()">대화 불러오기</button>
                     <input style="display:none;" id="ld" type="file" onchange="load(event)">
                     <button class="btn" onclick="logout()">로그아웃</button>
-                    <button class="btn">수상한 버튼</button>
+                    <button class="btn" onclick="goes()">수상한 버튼</button>
                 </div>
                 <div class="menu_box" style="align-items:flex-start;text-align:left;">
                     <h3 style="font-weight:bold;margin:0;text-align:center;width: 100%;">{ 명령어들 }</h3>
@@ -82,8 +82,11 @@
 
             };
             
+            function goes(){
+                open("/easteregg","_blank")
+            }
             function change_model(v){
-                ws.send(JSON.stringify({"type":"modelcg","model":v}))
+                ws.send(JSON.stringify({"type":"modelcg","model":v}));
             }
             function send(){
                 const t = i.value;

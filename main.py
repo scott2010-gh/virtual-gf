@@ -6,7 +6,7 @@ import chat_process
 from urllib.parse import unquote
 import asyncio
 import json
-
+import random as r
 app = FastAPI()
 c = chat_process.req()
 
@@ -138,3 +138,11 @@ async def read(request:Request):
     res = t.TemplateResponse(request=request,name="logout.html")
     res.delete_cookie("user_data")
     return res
+
+@app.get("/easteregg",response_class=HTMLResponse)
+async def read(request:Request):
+    colors = []
+    for _ in range(52):
+        colors.append({"r":r.randrange(0,255),"g":r.randrange(0,255),"b":r.randrange(0,255)})
+    return t.TemplateResponse(request=request,name="easteregg.html",context={"color":colors})
+
